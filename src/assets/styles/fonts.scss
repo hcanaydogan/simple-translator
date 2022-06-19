@@ -1,0 +1,44 @@
+/* inconsolata-regular - latin */
+@font-face {
+    font-family: 'Inconsolata';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/inconsolata/inconsolata-v30-latin-regular.woff2') format('woff2'), url('../fonts/inconsolata/inconsolata-v30-latin-regular.woff') format('woff');
+}
+
+
+/* inconsolata-700 - latin */
+@font-face {
+    font-family: 'Inconsolata';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/inconsolata/inconsolata-v30-latin-700.woff2') format('woff2'), url('../fonts/inconsolata/inconsolata-v30-latin-700.woff') format('woff');
+}
+
+/* font icons */
+@font-face {
+  font-family: 'font-icons';
+  src: url('../fonts/icons/font-icons.woff2') format('woff2'),
+    url('../fonts/icons/font-icons.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$icon-class-prefix: 'icon__';
+$icons: (
+  replay: unicode(ea02),
+  mic: unicode(ea03),
+  hearing: unicode(ea04),
+  translate: unicode(ea05),
+  backup: unicode(ea06),
+);
+
+@each $class, $unicode in $icons {
+    .#{$icon-class-prefix}#{$class}:before {
+        content: $unicode;
+    }
+}
+
+[class*='#{$icon-class-prefix}'] {
+    font: normal normal normal 1rem 'font-icons';
+}

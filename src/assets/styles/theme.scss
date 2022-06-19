@@ -1,0 +1,35 @@
+$palettes: (
+  primary: (
+    light: (
+      color: #5e91f2,
+      textColor: #000,
+    ),
+    normal: (
+      color: #1564bf,
+      textColor: #fff,
+    ),
+    dark: (
+      color: #003b8e,
+      textColor: #fff,
+    )
+  ),
+  secondary: (
+    light: (
+      color: #62727b,
+      textColor: #000,
+    ),
+    normal: (
+      color: #37474f,
+      textColor: #fff,
+    ),
+    dark: (
+      color: #102027,
+      textColor: #fff,
+    )
+  )
+);
+
+@mixin color($palette, $tone){
+  background-color: map-get(map-get(map-get($palettes, $palette), $tone), color);
+  color: map-get(map-get(map-get($palettes, $palette), $tone), textColor);
+}
