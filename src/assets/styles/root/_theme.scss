@@ -2,34 +2,39 @@ $palettes: (
   primary: (
     light: (
       color: #5e91f2,
-      textColor: #000,
+      contrastColor: #000,
     ),
     normal: (
       color: #1564bf,
-      textColor: #fff,
+      contrastColor: #fff,
     ),
     dark: (
       color: #003b8e,
-      textColor: #fff,
+      contrastColor: #fff,
     )
   ),
   secondary: (
     light: (
       color: #62727b,
-      textColor: #000,
+      contrastColor: #000,
     ),
     normal: (
       color: #37474f,
-      textColor: #fff,
+      contrastColor: #fff,
     ),
     dark: (
       color: #102027,
-      textColor: #fff,
+      contrastColor: #fff,
     )
   )
 );
 
-@mixin color($palette, $tone){
-  background-color: map-get(map-get(map-get($palettes, $palette), $tone), color);
-  color: map-get(map-get(map-get($palettes, $palette), $tone), textColor);
+:root {
+  @each $paletteName, $paletteValues in $palettes {
+      @each $toneName, $toneValues in $paletteValues {
+          $keyname: "--palette-" + $paletteName + "-" + $toneName;
+          #{$keyname}-color: map-get($toneValues, color);
+          #{$keyname}-contrast-color: map-get($toneValues, contrastColor);
+        }
+  }
 }
