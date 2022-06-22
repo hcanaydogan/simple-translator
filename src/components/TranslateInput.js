@@ -1,66 +1,55 @@
-import React, { useState, useRef, useReducer } from 'react';
+import React, { useState, useRef, useReducer, useCallback } from 'react';
 import SpeechRecognitionButton from './SpeechRecognitionButton';
-
-const initialState = {
-  finalTranscript: '',
-  interimTranscript: ''
-};
-
-const interimTranscriptReset = () => ({ type: 'interimTranscriptReset' });
-const interimTranscriptAdded = transcript => ({ type: 'interimTranscriptAdded', payload: transcript });
-const finalTranscriptAdded = transcript => ({ type: 'finalTranscriptAdded', payload: transcript });
-const finalTranscriptSet = transcript => ({ type: 'finalTranscriptSet', payload: transcript });
-
-function reducer(state, action) {
-  console.log('%c action', logStyle(), action);
-  switch (action.type) {
-    case 'interimTranscriptReset':
-      return { ...state, interimTranscript: '' };
-    case 'interimTranscriptAdded':
-      return { ...state, interimTranscript: state.interimTranscript + action.payload };
-    case 'finalTranscriptAdded':
-      return { ...state, finalTranscript: state.finalTranscript +  action.payload + ' '};
-    case 'finalTranscriptSet':
-      return { ...state, finalTranscript: action.payload };
-    default:
-      throw new Error();
-  }
-}
+import useRecognitionResult from '../hooks/useRecognitionResult';
+import { getTranslationEngToTr } from '../services/translation/argosopentech.api';
 
 function TranslateInput() {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const [readOnly, setReadOnly] = useState(false);
+  console.log('%cTranslateInput', logStyle('red'));
+  
+  const [textareaInputReadOnly, setTextareaInputReadOnly] = useState(false);
   const textAreaInput = useRef(null);
 
-  console.log('%cTranslateInput', logStyle('red'));
+  const recognitionOptions = useRef({ interimResults: true, lang: 'en-US', /*continuous: true*/ }).current;
+  const {finalTranscript, interimTranscript, onRecognitionResult, setFinalTranscript} = useRecognitionResult();
+  const onRecognitionStart = useCallback(() => setTextareaInputReadOnly(true), []);
+  const onRecognitionEnd = useCallback(() => (setTextareaInputReadOnly(false), textAreaInput.current.focus()), []);
+  const onRecognitionError = useCallback((err) => console.error(err), []);
+  
+  const [translatedText, setTranslatedText] = useState('');
 
-  const handleTextareaChange = ({target: { value }}) => {
-    console.log('%cvalue', logStyle(), value);
-    dispatch(finalTranscriptSet(value))
+  const handleTextareaChange = ({ target: { value } }) => {
+    console.log('%cvalue', logStyle('orange'), value);
+    setFinalTranscript(value);
   };
 
-  const onRecognitionResult = event => {
-    dispatch(interimTranscriptReset());
-    for (var i = event.resultIndex; i < event.results.length; ++i) {
-      if (event.results[i].isFinal) {
-        console.log('%cfinal', logStyle('green'));
-        dispatch(finalTranscriptAdded(event.results[i][0].transcript));
-      } else {
-        console.log('%cinterim', logStyle('blue'));
-        dispatch(interimTranscriptAdded(event.results[i][0].transcript));
-      }
+  async function getTranslation() {
+    console.log('onclick')
+    try {
+      const res = await getTranslationEngToTr(finalTranscript);
+      setTranslatedText(res.translatedText);
+      console.log(res.translatedText);
+    } catch (e) {
+      console.log(e);
     }
-  };
+  }
 
-  const onRecognitionStart = () => setReadOnly(true);
-  const onRecognitionEnd = () => (setReadOnly(false), textAreaInput.current.focus());
-  const onRecognitionError = (err) => console.error(err);
+  function saveToLocalStorage(){}
 
   return (
-    <div>
-      <textarea ref={textAreaInput} className="input-area" value={`${state.finalTranscript}${state.interimTranscript}`} onChange={handleTextareaChange} readOnly={readOnly} autoFocus>
-      </textarea>
-      <SpeechRecognitionButton options={{interimResults: true, lang: 'en-Us'}} onStart={onRecognitionStart} onEnd={onRecognitionEnd} onResult={onRecognitionResult} onError={onRecognitionError}/>
+    <div style={{ display: 'flex' }}>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <textarea ref={textAreaInput} className="input-area" value={`${finalTranscript}${interimTranscript}`} onChange={handleTextareaChange} readOnly={textareaInputReadOnly} autoFocus>
+        </textarea>
+        <div style={{ display: 'flex', justifyContent: 'end' }}>
+          <SpeechRecognitionButton options={recognitionOptions} onStart={onRecognitionStart} onEnd={onRecognitionEnd} onResult={onRecognitionResult} onError={onRecognitionError} />
+          <button className='button' onClick={getTranslation}><i className='icon__translate'></i></button>
+        </div>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <textarea readOnly={true} className="input-area" value={translatedText}>
+        </textarea>
+        <button style={{alignSelf: 'end'}} className='button' onClick={saveToLocalStorage}><i className='icon__backup'></i></button>
+      </div>
     </div>
   );
 }
