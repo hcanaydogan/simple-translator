@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, memo } from 'react';
 
 function SpeechRecognitionButton({onStart, onEnd, onResult, onError, options}) {
   const recognition = useRef(null);
@@ -38,4 +38,4 @@ function SpeechRecognitionButton({onStart, onEnd, onResult, onError, options}) {
   );
 }
 
-export default SpeechRecognitionButton;
+export default memo(SpeechRecognitionButton);

@@ -1,6 +1,8 @@
 .button{
   --bg-color: var(--palette-primary-normal-color);
   --text-color: var(--palette-primary-normal-contrast-color);
+  --hover-bg-color: var(--palette-primary-light-color);
+  --hover-text-color: var(--palette-primary-light-contrast-color);
   position: relative;
   display: flex;
   width: 2.5rem;
@@ -15,8 +17,8 @@
   border: none;
 
   &:hover{
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    background-color: var(--hover-bg-color);
+    color: var(--hover-text-color);
   }
 
   &.ping {
