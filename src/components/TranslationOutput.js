@@ -4,9 +4,11 @@ import SpeakTextButton from './SpeakTextButton';
 
 function TranslationOutput() {
   console.log('%cTranslationOutput', logStyle('darkorange'));
-  const { translatedText } = useContext(TranslationContext);
+  const { translatedText, saveTranslation } = useContext(TranslationContext);
 
-  function saveToLocalStorage() { }
+  function _saveTranslation() { 
+    saveTranslation();
+  }
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -14,7 +16,7 @@ function TranslationOutput() {
       </textarea>
       <div style={{ display: 'flex', justifyContent: 'end' }}>
         <SpeakTextButton text={translatedText} />
-        <button className='button' onClick={saveToLocalStorage}><i className='icon__backup'></i></button>
+        <button className='button' onClick={_saveTranslation}><i className='icon__backup'></i></button>
       </div>
     </div>
   );
