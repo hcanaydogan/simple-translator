@@ -7,7 +7,7 @@ function TranslationPage() {
   console.log('%cTranslationPage', logStyle('radial-gradient(crimson, transparent)'));
   return (
     <TranslationProvider>
-      <div style={{display: 'flex'}}>
+      <div style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)'}}>
         <TranslationInput></TranslationInput>
         <TranslationOutput></TranslationOutput>
       </div>
