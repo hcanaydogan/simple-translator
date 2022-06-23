@@ -1,8 +1,7 @@
 main{
   color: var(--palette-secondary-normal-color);
+
   @media all and (min-width: breakpoint(md)){
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
     padding: 0 1rem;
   }
 
@@ -10,4 +9,29 @@ main{
     max-width: 70vw;
     margin: auto;
   }
+  
+  .translation-container{
+    @media all and (min-width: breakpoint(md)){
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .translation-inputs{
+      .translation-textarea{
+        position: relative;
+
+        i{
+          position: absolute;
+          right: 0.2rem;
+          top: 0.2rem;
+        }
+      }
+    }
+    
+    .translation-buttons{
+      display: flex;
+      justify-content: end;
+    }
+  }
 }
+

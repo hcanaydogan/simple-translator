@@ -27,15 +27,15 @@ function TranslationInput() {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <div className="translation-inputs">
       <h3>English</h3>
-      <div style={{ position: 'relative' }}>
+      <div className="translation-textarea">
         <textarea ref={textAreaInput} className="input-area" value={`${finalTranscript}${interimTranscript}`} onChange={handleTextareaChange} readOnly={recognitionActive} autoFocus>
         </textarea>
-        {recognitionActive && <i className="icon__hearing action-positive pulse" style={{ position: 'absolute', right: '0.2rem', top: '0.2rem' }}></i>}
+        {recognitionActive && <i className="icon__hearing action-positive pulse"></i>}
       </div>
 
-      <div style={{ display: 'flex', justifyContent: 'end' }}>
+      <div className="translation-buttons">
         <SpeechRecognitionButton options={recognitionOptions} onStart={onRecognitionStart} onEnd={onRecognitionEnd} onResult={onRecognitionResult} onError={onRecognitionError} />
         <button className='button' onClick={handleTranslateClick}><i className='icon__translate'></i></button>
       </div>

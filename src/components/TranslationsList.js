@@ -6,7 +6,8 @@ function TranslationsList() {
   const { translationHistory } = useContext(TranslationContext);
   console.log(translationHistory)
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <div className="translations-list">
+      <h2>Translation History</h2>
       {translationHistory.map(({ text, translation}, i) => (
         <div key={i} style={{display: 'flex'}}>
             <div style={{margin: '1rem'}}>{text}</div>

@@ -1,11 +1,11 @@
 import React from 'react';
-import TranslationPage from './components/TranslationPage';
+import TranslationPage from './pages/TranslationPage';
 
 function App() {
   return (
-    <div className="App">
+    <>
       <TranslationPage />
-    </div>
+    </>
   );
 }
 

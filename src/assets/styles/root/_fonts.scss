@@ -51,6 +51,6 @@ $headings-font-sizes: 2em, 1.75em, 1.5em, 1.25em, 1.125em, 1em;
   #{$selectors} {
     font-size: nth($headings-font-sizes, $i);
     padding-left: 1rem;
-    margin-bottom: 0.5rem;
+    margin: 0.5rem 0;
   }
 }

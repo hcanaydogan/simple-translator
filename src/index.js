@@ -4,6 +4,7 @@ import './index.scss';
 import App from './App';
 
 window.logStyle = (color) => 'font-size: 14px; padding: 3px; border-radius: 5px; color: white; background: ' + color;
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>

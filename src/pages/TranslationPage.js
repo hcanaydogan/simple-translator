@@ -1,8 +1,8 @@
 import React from "react";
 import { Provider as TranslationProvider } from '../contexts/TranslationContext';
-import TranslationInput from "./TranslationInput";
-import TranslationOutput from "./TranslationOutput";
-import TranslationsList from "./TranslationsList";
+import TranslationInput from "../components/TranslationInput";
+import TranslationOutput from "../components/TranslationOutput";
+import TranslationsList from "../components/TranslationsList";
 
 function TranslationPage() {
   console.log('%cTranslationPage', logStyle('radial-gradient(crimson, transparent)'));
@@ -13,10 +13,12 @@ function TranslationPage() {
         <h1>Simple Translator</h1>
       </header>
       <main>
-        <TranslationInput />
-        <TranslationOutput />
+        <div className="translation-container">
+          <TranslationInput />
+          <TranslationOutput />
+        </div>
+        <TranslationsList />
       </main>
-      <TranslationsList />
       <footer></footer>
     </TranslationProvider>
   );

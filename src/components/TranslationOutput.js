@@ -11,11 +11,11 @@ function TranslationOutput() {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <div>
       <h3>Turkish</h3>
       <textarea readOnly={true} className="input-area" value={translatedText}>
       </textarea>
-      <div style={{ display: 'flex', justifyContent: 'end' }}>
+      <div className="translation-buttons">
         <SpeakTextButton text={translatedText} />
         <button className='button' onClick={_saveTranslation}><i className='icon__backup'></i></button>
       </div>
