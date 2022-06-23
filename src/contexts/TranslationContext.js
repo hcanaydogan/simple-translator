@@ -8,7 +8,7 @@ function Provider({children}){
   const [translationHistory, setTranslationHistory] = useState([]);
 
   async function getTranslation(text) {
-    console.log('  %cgetTranslation', logStyle('crimson'), text);
+    console.log('%cgetTranslation', logStyle('crimson'), text);
     try {
       const res = await getTranslationEngToTr(text);
       setTranslatedText(res.translatedText);
