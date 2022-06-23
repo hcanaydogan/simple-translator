@@ -33,5 +33,34 @@ main{
       justify-content: end;
     }
   }
+
+  .translations-list-container{
+    h2{
+      margin: 2rem 0 1rem;
+    }
+    .translations-list{
+      .translations-list-item{
+        border: 1px solid rgba(0, 0, 0, .1);
+        padding: 0.5rem;
+
+        @media all and (min-width: breakpoint(md)){
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        &>div{
+          padding: 0.3rem;
+          &:first-child{
+            grid-column-start: span 2;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+          }
+          &:last-child{
+            background: #37474f0d;
+          }
+        }
+      }
+    }
+  }
 }
 

@@ -6,14 +6,20 @@ function TranslationsList() {
   const { translationHistory } = useContext(TranslationContext);
   console.log(translationHistory)
   return (
-    <div className="translations-list">
-      <h2>Translation History</h2>
-      {translationHistory.map(({ text, translation}, i) => (
-        <div key={i} style={{display: 'flex'}}>
-            <div style={{margin: '1rem'}}>{text}</div>
-            <div style={{margin: '1rem'}}>{translation}</div>
-        </div>
-      ))}
+    <div className="translations-list-container">
+      <h2>Translation History (English to Turkish)</h2>
+      <div className="translations-list">
+        {translationHistory.reverse().map(({ id, text, translation, createdAt }) => {
+          if (!text || !translation) return;
+          return (
+            <div key={id} className="translations-list-item">
+              <div>{createdAt}</div>
+              <div>{text}</div>
+              <div>{translation}</div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
