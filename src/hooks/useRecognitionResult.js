@@ -11,7 +11,7 @@ const finalTranscriptAdded = transcript => ({ type: 'finalTranscriptAdded', payl
 const finalTranscriptSet = transcript => ({ type: 'finalTranscriptSet', payload: transcript });
 
 function reducer(state, action) {
-  console.log('%c action', logStyle('green'), action);
+  //console.log('%c action', logStyle('green'), action);
   switch (action.type) {
     case 'interimTranscriptReset':
       return { ...state, interimTranscript: '' };
@@ -33,10 +33,10 @@ function useRecognitionResult(){
     dispatch(interimTranscriptReset());
     for (var i = event.resultIndex; i < event.results.length; ++i) {
       if (event.results[i].isFinal) {
-        console.log('%cfinal', logStyle('green'));
+        //console.log('%cfinal', logStyle('green'));
         dispatch(finalTranscriptAdded(event.results[i][0].transcript));
       } else {
-        console.log('%cinterim', logStyle('blue'));
+        //console.log('%cinterim', logStyle('blue'));
         dispatch(interimTranscriptAdded(event.results[i][0].transcript));
       }
     }

@@ -1,9 +1,10 @@
 import React, { useState, useRef, memo } from 'react';
 
 function SpeechRecognitionButton({onStart, onEnd, onResult, onError, options}) {
+  console.log(' %cSpeechRecognitionButton', logStyle('lightseagreen'));
+  
   const recognition = useRef(null);
   const [active, setActive] = useState(false);
-  console.log('%cSpeechRecognitionButton', logStyle('blue'));
 
   function getRecognition() {
     if (recognition.current === null) {

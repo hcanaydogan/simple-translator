@@ -1,10 +1,10 @@
 import React from 'react';
-import TranslateInput from './components/TranslateInput';
+import TranslationPage from './components/TranslationPage';
 
 function App() {
   return (
     <div className="App">
-      <TranslateInput />
+      <TranslationPage />
     </div>
   );
 }
