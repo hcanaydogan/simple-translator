@@ -1,8 +1,8 @@
 .button{
-  --bg-color: var(--palette-primary-normal-color);
-  --text-color: var(--palette-primary-normal-contrast-color);
-  --hover-bg-color: var(--palette-primary-light-color);
-  --hover-text-color: var(--palette-primary-light-contrast-color);
+  --bg-color: var(--palette-secondary-normal-color);
+  --text-color: var(--palette-secondary-normal-contrast-color);
+  --hover-bg-color: var(--palette-secondary-light-color);
+  --hover-text-color: var(--palette-secondary-light-contrast-color);
   position: relative;
   display: flex;
   width: 2.5rem;

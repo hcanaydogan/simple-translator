@@ -3,7 +3,7 @@ export function addItemToList(listName, item){
   let list =  JSON.parse(localStorage.getItem(listName)) || [];
   let id = list.length ? Math.max(...list.map(({id}) => id)) + 1 : 1;
 
-  list.push({id, ...item});
+  list.push({id, ...item, createdAt: new Date().toDateString()});
   
   console.log('storage',listName)
   localStorage.setItem(listName, JSON.stringify(list));

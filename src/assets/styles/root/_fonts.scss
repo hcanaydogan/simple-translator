@@ -41,5 +41,16 @@ $icons: (
 }
 
 [class*='#{$icon-class-prefix}'] {
-    font: normal normal normal 1rem 'font-icons';
+    font: normal normal normal 1.5em 'font-icons';
+}
+
+/* headings font sizes */
+$headings-font-sizes: 2em, 1.75em, 1.5em, 1.25em, 1.125em, 1em;
+@for $i from 1 through 6 {
+  $selectors: "h#{$i}";
+  #{$selectors} {
+    font-size: nth($headings-font-sizes, $i);
+    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+  }
 }

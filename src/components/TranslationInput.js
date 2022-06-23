@@ -28,6 +28,7 @@ function TranslationInput() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <h3>English</h3>
       <div style={{ position: 'relative' }}>
         <textarea ref={textAreaInput} className="input-area" value={`${finalTranscript}${interimTranscript}`} onChange={handleTextareaChange} readOnly={recognitionActive} autoFocus>
         </textarea>

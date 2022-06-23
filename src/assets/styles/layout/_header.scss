@@ -1,0 +1,14 @@
+header{
+  border-bottom: 1px solid rgba(0, 0, 0, .3);
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  background: var(--palette-primary-normal-color);
+  color: var(--palette-primary-normal-contrast-color);
+  padding-left: 1rem;
+
+  h1{
+    margin: 0;
+  }
+}
