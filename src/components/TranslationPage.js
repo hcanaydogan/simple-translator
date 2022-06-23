@@ -12,10 +12,10 @@ function TranslationPage() {
         <i className="icon__translate"></i>
         <h1>Simple Translator</h1>
       </header>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
+      <main>
         <TranslationInput />
         <TranslationOutput />
-      </div>
+      </main>
       <TranslationsList />
       <footer></footer>
     </TranslationProvider>

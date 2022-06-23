@@ -12,7 +12,7 @@ function TranslationOutput() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <h3>Türkçe</h3>
+      <h3>Turkish</h3>
       <textarea readOnly={true} className="input-area" value={translatedText}>
       </textarea>
       <div style={{ display: 'flex', justifyContent: 'end' }}>

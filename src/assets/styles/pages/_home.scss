@@ -1,0 +1,13 @@
+main{
+  color: var(--palette-secondary-normal-color);
+  @media all and (min-width: breakpoint(md)){
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 1rem;
+  }
+
+  @media all and (min-width: breakpoint(xxl)) {
+    max-width: 70vw;
+    margin: auto;
+  }
+}
