@@ -29,6 +29,11 @@ $palettes: (
   )
 );
 
+$actionColors: (
+  positive: forestgreen,
+  negative: crimson
+);
+
 :root {
   @each $paletteName, $paletteValues in $palettes {
       @each $toneName, $toneValues in $paletteValues {
@@ -36,5 +41,9 @@ $palettes: (
           #{$keyname}-color: map-get($toneValues, color);
           #{$keyname}-contrast-color: map-get($toneValues, contrastColor);
         }
+  }
+  @each $actionColorName, $actionColor in $actionColors {
+    $keyname: "--action-" + $actionColorName;
+    #{$keyname}-color: $actionColor;
   }
 }

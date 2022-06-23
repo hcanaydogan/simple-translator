@@ -26,11 +26,12 @@
 
 $icon-class-prefix: 'icon__';
 $icons: (
-  replay: unicode(ea02),
   mic: unicode(ea03),
   hearing: unicode(ea04),
   translate: unicode(ea05),
   backup: unicode(ea06),
+  stop: unicode(ea07),
+  speak: unicode(ea08)
 );
 
 @each $class, $unicode in $icons {

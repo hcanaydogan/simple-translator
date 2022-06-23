@@ -1,11 +1,22 @@
 @keyframes ping {
-  0% {
-    transform: var(--transform) scale(1);
-    opacity: 1
-  }
+    0% {
+        transform: var(--transform) scale(1);
+        opacity: 1
+    }
+    100% {
+        transform: var(--transform) scale(1.5);
+        opacity: 0
+    }
+}
 
-  100% {
-    transform: var(--transform) scale(1.5);
-    opacity: 0
-  }
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
 }

@@ -1,0 +1,11 @@
+[class*=icon__]{
+  &.action-positive{
+    color: var(--action-positive-color);
+  }
+  &.action-negative{
+    color: var(--action-negative-color);
+  }
+  &.pulse{
+    animation: pulse 0.75s infinite;
+  }  
+}

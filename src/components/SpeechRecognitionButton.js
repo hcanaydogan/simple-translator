@@ -35,7 +35,7 @@ function SpeechRecognitionButton({onStart, onEnd, onResult, onError, options}) {
   }
 
   return (
-    <button id="speech-to-text-button" className={`button ${active ? 'ping' : ''}`} onClick={onClickHandler}><i className="icon__mic"></i></button>
+    <button id="speech-to-text-button" className={`button ${active ? 'ping' : ''}`} onClick={onClickHandler}><i className={active ? 'icon__stop' : 'icon__mic'}></i></button>
   );
 }
 
