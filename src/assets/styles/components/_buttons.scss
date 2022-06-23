@@ -26,6 +26,25 @@
     opacity: 0.5;
   }
 
+  &.loading{
+    color: transparent;
+
+    &:after{
+      content: '';
+      position: absolute;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      top: 50%;
+      height: 1em;
+      width: 1em;
+      border-radius: 290486px;
+      border-color: transparent transparent var(--text-color) var(--text-color);
+      border-style: solid;
+      border-width: 0.15em;
+      animation: rotate360 .5s linear infinite;
+    }
+  }
+
   &.ping {
     --ping-color: var(--bg-color);
 

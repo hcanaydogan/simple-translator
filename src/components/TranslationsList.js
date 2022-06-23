@@ -4,8 +4,10 @@ import TranslationContext from '../contexts/TranslationContext';
 function TranslationsList() {
   console.log('%cTranslationsList', logStyle('purple'));
   const { translationHistory, clearTranslationHistory } = useContext(TranslationContext);
-  console.log(translationHistory)
-  return translationHistory.length && (
+
+  if(!translationHistory.length) return null;
+
+  return (
     <div className="translations-list-container">
       <div className="tanslation-list-title">
         <h2>Translation History (English to Turkish)</h2>

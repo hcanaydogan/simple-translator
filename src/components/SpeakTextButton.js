@@ -14,7 +14,7 @@ function SpeakTextButton({ text, onStart, onEnd }) {
   }, []);
 
   function speak() {
-    if(active){
+    if (active) {
       speechSynthesis.cancel();
       return;
     }
@@ -36,7 +36,9 @@ function SpeakTextButton({ text, onStart, onEnd }) {
   }
 
   return (
-    <button className={`button ${active ? 'ping' : ''}`} onClick={speak}><i className={active ? 'icon__stop' : 'icon__speak'}></i></button>
+    <button className={`button ${active ? 'ping' : ''}`} onClick={speak}>
+      <i className={active ? 'icon__stop' : 'icon__speak'}></i>
+    </button>
   );
 }
 

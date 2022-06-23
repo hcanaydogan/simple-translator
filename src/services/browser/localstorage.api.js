@@ -5,7 +5,6 @@ export function addItemToList(listName, item){
 
   list.push({id, ...item, createdAt: new Date().toDateString()});
   
-  console.log('storage',listName)
   localStorage.setItem(listName, JSON.stringify(list));
 }
 

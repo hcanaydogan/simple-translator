@@ -5,7 +5,7 @@ import TranslationContext from '../contexts/TranslationContext';
 
 function TranslationInput() {
   console.log('%cTranslationInput', logStyle('forestgreen'));
-  const { getTranslation } = useContext(TranslationContext);
+  const { getTranslation, fetchingTranslation } = useContext(TranslationContext);
 
   const [recognitionActive, setRecognitionActive] = useState(false);
   const textAreaInput = useRef(null);
@@ -18,7 +18,6 @@ function TranslationInput() {
   const onRecognitionError = useCallback((err) => console.error(err), []);
 
   const handleTextareaChange = ({ target: { value } }) => {
-    //console.log('%cvalue', logStyle('orange'), value);
     setFinalTranscript(value);
   };
 
@@ -37,7 +36,7 @@ function TranslationInput() {
 
       <div className="translation-buttons">
         <SpeechRecognitionButton options={recognitionOptions} onStart={onRecognitionStart} onEnd={onRecognitionEnd} onResult={onRecognitionResult} onError={onRecognitionError} />
-        <button className='button' onClick={handleTranslateClick} disabled={recognitionActive}><i className='icon__translate'></i></button>
+        <button className={`button ${fetchingTranslation ? 'loading pulse' : ''}`} onClick={handleTranslateClick} disabled={recognitionActive}><i className='icon__translate'></i></button>
       </div>
     </div>
   );

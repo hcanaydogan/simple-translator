@@ -20,3 +20,13 @@
         transform: scale(1);
     }
 }
+
+@keyframes rotate360 {
+  from {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

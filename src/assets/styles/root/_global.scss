@@ -7,3 +7,7 @@ body {
   font-family: Inconsolata, monospace;
   -webkit-font-smoothing: antialiased;
 }
+
+.pulse{
+  animation: pulse 0.75s infinite;
+}  

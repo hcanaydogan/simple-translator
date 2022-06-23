@@ -8,6 +8,7 @@ function Provider({children}){
   console.log('%cTranslationContext', logStyle('radial-gradient(blue, transparent)'));
   const [text, setText] = useState('');
   const [translatedText, setTranslatedText] = useState('');
+  const [fetchingTranslation, setFetchingTranslation] = useState(false);
   const [translationHistory, setToTranslationHistory] = useState([]);
 
   useEffect(() => {
@@ -18,12 +19,14 @@ function Provider({children}){
   async function getTranslation(text) {
     console.log('%cgetTranslation', logStyle('crimson'), text);
     try {
+      setFetchingTranslation(true);
       const res = await getTranslationEngToTr(text);
       setText(text);
       setTranslatedText(res.translatedText);
-      console.log(res.translatedText);
     } catch (e) {
-      console.log(e);
+      console.error(e);
+    } finally{
+      setFetchingTranslation(false);
     }
   }
 
@@ -42,7 +45,8 @@ function Provider({children}){
     getTranslation,
     translationHistory,
     saveTranslation,
-    clearTranslationHistory
+    clearTranslationHistory,
+    fetchingTranslation
   };
 
   return (

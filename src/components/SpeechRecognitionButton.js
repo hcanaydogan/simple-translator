@@ -1,8 +1,8 @@
 import React, { useState, useRef, memo } from 'react';
 
-function SpeechRecognitionButton({onStart, onEnd, onResult, onError, options}) {
+function SpeechRecognitionButton({ onStart, onEnd, onResult, onError, options }) {
   console.log(' %cSpeechRecognitionButton', logStyle('lightseagreen'));
-  
+
   const recognition = useRef(null);
   const [active, setActive] = useState(false);
 
@@ -13,7 +13,7 @@ function SpeechRecognitionButton({onStart, onEnd, onResult, onError, options}) {
     return recognition.current;
   }
 
-  function initRecognition(){
+  function initRecognition() {
     let rec = new webkitSpeechRecognition();
     Object.assign(rec, options);
     rec.onstart = () => {
@@ -29,13 +29,15 @@ function SpeechRecognitionButton({onStart, onEnd, onResult, onError, options}) {
     return rec;
   }
 
-  function onClickHandler(){
-    if(active) getRecognition().stop();
+  function onClickHandler() {
+    if (active) getRecognition().stop();
     else getRecognition().start();
   }
 
   return (
-    <button id="speech-to-text-button" className={`button ${active ? 'ping' : ''}`} onClick={onClickHandler}><i className={active ? 'icon__stop' : 'icon__mic'}></i></button>
+    <button id="speech-to-text-button" className={`button ${active ? 'ping' : ''}`} onClick={onClickHandler}>
+      <i className={active ? 'icon__stop' : 'icon__mic'}></i>
+    </button>
   );
 }
 
