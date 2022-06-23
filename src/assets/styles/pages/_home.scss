@@ -24,6 +24,7 @@ main{
           position: absolute;
           right: 0.2rem;
           top: 0.2rem;
+          font-size: 1.25em;
         }
       }
     }
@@ -35,8 +36,17 @@ main{
   }
 
   .translations-list-container{
-    h2{
-      margin: 2rem 0 1rem;
+    .tanslation-list-title{
+      display: flex;
+      justify-content: space-between;
+      h2{
+        margin: 2rem 0;
+      }
+      span{
+        color: var(--action-negative-color);
+        cursor: pointer;
+        align-self: end;
+      }
     }
     .translations-list{
       .translations-list-item{
@@ -46,6 +56,10 @@ main{
         @media all and (min-width: breakpoint(md)){
           display: grid;
           grid-template-columns: repeat(2, 1fr);
+        }
+
+        &:not(:last-child){
+          border-bottom: none;
         }
 
         &>div{

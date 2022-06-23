@@ -10,9 +10,9 @@ export function addItemToList(listName, item){
 }
 
 export function getList(listName){
-  return JSON.parse(localStorage.getItem(listName));
+  return JSON.parse(localStorage.getItem(listName)) || [];
 }
 
-export function deleteListItem(listName, id){
-
+export function clearList(listName){
+  localStorage.removeItem(listName)
 }

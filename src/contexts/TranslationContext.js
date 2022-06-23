@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import { getTranslationEngToTr } from '../services/translation/argosopentech.api';
-import { addItemToList, getList } from '../services/browser/localstorage.api';
+import { addItemToList, getList, clearList } from '../services/browser/localstorage.api';
 
 const TranslationContext = createContext();
 
@@ -32,12 +32,19 @@ function Provider({children}){
     setToTranslationHistory(getList('saved_translations'));
   }
 
+  function clearTranslationHistory(){
+    clearList('saved_translations');
+    setToTranslationHistory(getList('saved_translations'));
+  }
+
   const value = {
     translatedText,
     getTranslation,
     translationHistory,
-    saveTranslation
+    saveTranslation,
+    clearTranslationHistory
   };
+
   return (
     <TranslationContext.Provider value={value}>{children}</TranslationContext.Provider>
   );

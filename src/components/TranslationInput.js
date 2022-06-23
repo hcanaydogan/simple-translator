@@ -37,7 +37,7 @@ function TranslationInput() {
 
       <div className="translation-buttons">
         <SpeechRecognitionButton options={recognitionOptions} onStart={onRecognitionStart} onEnd={onRecognitionEnd} onResult={onRecognitionResult} onError={onRecognitionError} />
-        <button className='button' onClick={handleTranslateClick}><i className='icon__translate'></i></button>
+        <button className='button' onClick={handleTranslateClick} disabled={recognitionActive}><i className='icon__translate'></i></button>
       </div>
     </div>
   );

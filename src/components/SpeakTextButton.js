@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 
-function SpeakTextButton({ text }) {
+function SpeakTextButton({ text, onStart, onEnd }) {
   console.log(' %cSpeakTextButton', logStyle('orange'));
 
   const [active, setActive] = useState(false);
@@ -22,12 +22,14 @@ function SpeakTextButton({ text }) {
     let utterance = new SpeechSynthesisUtterance(text);
     utterance.voice = trVoice;
 
-    utterance.onend = (event) => {
-      setActive(false);
-    }
-
     utterance.onstart = () => {
       setActive(true);
+      onStart();
+    }
+
+    utterance.onend = (event) => {
+      setActive(false);
+      onEnd();
     }
 
     speechSynthesis.speak(utterance);
@@ -38,4 +40,4 @@ function SpeakTextButton({ text }) {
   );
 }
 
-export default SpeakTextButton;
+export default memo(SpeakTextButton);

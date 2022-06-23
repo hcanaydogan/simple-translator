@@ -3,11 +3,14 @@ import TranslationContext from '../contexts/TranslationContext';
 
 function TranslationsList() {
   console.log('%cTranslationsList', logStyle('purple'));
-  const { translationHistory } = useContext(TranslationContext);
+  const { translationHistory, clearTranslationHistory } = useContext(TranslationContext);
   console.log(translationHistory)
-  return (
+  return translationHistory.length && (
     <div className="translations-list-container">
-      <h2>Translation History (English to Turkish)</h2>
+      <div className="tanslation-list-title">
+        <h2>Translation History (English to Turkish)</h2>
+        <span onClick={clearTranslationHistory}>Clear All</span>
+      </div>
       <div className="translations-list">
         {translationHistory.reverse().map(({ id, text, translation, createdAt }) => {
           if (!text || !translation) return;

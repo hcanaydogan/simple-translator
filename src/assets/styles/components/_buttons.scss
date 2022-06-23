@@ -22,6 +22,10 @@
     color: var(--hover-text-color);
   }
 
+  &:disabled{
+    opacity: 0.5;
+  }
+
   &.ping {
     --ping-color: var(--bg-color);
 
