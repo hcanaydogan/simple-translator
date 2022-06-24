@@ -37,6 +37,7 @@ main{
         color: var(--action-negative-color);
         cursor: pointer;
         margin-right: auto;
+        padding: 0 0.5rem;
       }
     }
   }
@@ -53,6 +54,7 @@ main{
         cursor: pointer;
         align-self: end;
         white-space: nowrap;
+        padding: 0 0.5rem;
       }
     }
     .translations-list{
