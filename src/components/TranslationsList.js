@@ -11,10 +11,10 @@ function TranslationsList() {
     <div className="translations-list-container">
       <div className="tanslation-list-title">
         <h2>Translation History (English to Turkish)</h2>
-        <span onClick={clearTranslationHistory}>Clear All</span>
+        <span id="clear-all-button" onClick={clearTranslationHistory}>Clear All</span>
       </div>
       <div className="translations-list">
-        {translationHistory.reverse().map(({ id, text, translation, createdAt }) => {
+        {translationHistory.sort((x, y) => y.id - x.id).map(({ id, text, translation, createdAt }) => {
           if (!text || !translation) return;
           return (
             <div key={id} className="translations-list-item">

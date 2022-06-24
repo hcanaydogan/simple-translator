@@ -25,7 +25,14 @@ function SpeechRecognitionButton({ onStart, onEnd, onResult, onError, options })
       onEnd();
     };
     rec.onresult = onResult;
-    rec.onerror = onError;
+
+    rec.onerror = () => {
+      setActive(false);
+      onEnd();
+      rec.stop();
+      onError();
+    }
+
     return rec;
   }
 

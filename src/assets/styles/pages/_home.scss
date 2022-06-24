@@ -32,6 +32,12 @@ main{
     .translation-buttons{
       display: flex;
       justify-content: end;
+
+      #clear-button{
+        color: var(--action-negative-color);
+        cursor: pointer;
+        margin-right: auto;
+      }
     }
   }
 
@@ -42,7 +48,7 @@ main{
       h2{
         margin: 2rem 0;
       }
-      span{
+      #clear-all-button{
         color: var(--action-negative-color);
         cursor: pointer;
         align-self: end;

@@ -13,8 +13,12 @@ function Provider({children}){
 
   useEffect(() => {
     setToTranslationHistory(getList('saved_translations') || []);
-  }, [])
+  }, []);
 
+  function clearTranslation(){
+    setText('');
+    setTranslatedText('');
+  }
 
   async function getTranslation(text) {
     console.log('%cgetTranslation', logStyle('crimson'), text);
@@ -45,6 +49,7 @@ function Provider({children}){
     getTranslation,
     translationHistory,
     saveTranslation,
+    clearTranslation,
     clearTranslationHistory,
     fetchingTranslation
   };
