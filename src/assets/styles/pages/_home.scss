@@ -46,6 +46,7 @@ main{
         color: var(--action-negative-color);
         cursor: pointer;
         align-self: end;
+        white-space: nowrap;
       }
     }
     .translations-list{

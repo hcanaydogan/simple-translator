@@ -20,7 +20,8 @@ function SpeakTextButton({ text, onStart, onEnd }) {
     }
 
     let utterance = new SpeechSynthesisUtterance(text);
-    utterance.voice = trVoice;
+
+    if(trVoice) utterance.voice = trVoice;
 
     utterance.onstart = () => {
       setActive(true);
@@ -30,6 +31,10 @@ function SpeakTextButton({ text, onStart, onEnd }) {
     utterance.onend = (event) => {
       setActive(false);
       onEnd();
+    }
+
+    utterance.onerror = (err) => {
+      console.log(err)
     }
 
     speechSynthesis.speak(utterance);
